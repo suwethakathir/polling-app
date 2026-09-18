@@ -36,11 +36,17 @@ func main() {
 
 	// Create Gin router
 	router := gin.Default()
-    router.Use(cors.New(cors.Config{
-	AllowOrigins:     []string{"http://localhost:5173"},
-	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-	AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
-	AllowCredentials: true,
+    frontendURL := os.Getenv("FRONTEND_URL")
+
+if frontendURL == "" {
+    frontendURL = "http://localhost:5173"
+}
+
+router.Use(cors.New(cors.Config{
+    AllowOrigins: []string{frontendURL},
+    AllowMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+    AllowHeaders: []string{"Origin", "Content-Type", "Authorization"},
+    AllowCredentials: true,
 }))
 	// Test route
 	router.GET("/", func(c *gin.Context) {
@@ -51,10 +57,15 @@ func main() {
 	routes.AuthRoutes(router)
 	routes.PollRoutes(router)
 
-	fmt.Println("Server running on http://localhost:8080")
+	port := os.Getenv("PORT")
 
-	// Start server
-	err = router.Run(":8080")
+if port == "" {
+    port = "8080"
+}
+
+fmt.Println("Server running on port " + port)
+
+err = router.Run(":" + port)
 	if err != nil {
 		log.Fatal(err)
 	}
