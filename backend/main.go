@@ -7,7 +7,6 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-
 	"polling-app/backend/config"
 	"polling-app/backend/routes"
 )
@@ -35,6 +34,7 @@ func main() {
 	}
 
 	// Create Gin router
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
     frontendURL := os.Getenv("FRONTEND_URL")
 
