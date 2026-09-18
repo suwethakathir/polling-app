@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
@@ -14,7 +15,19 @@ import (
 
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool {
-		return r.Header.Get("Origin") == "http://localhost:5173"
+		origin := r.Header.Get("Origin")
+
+		frontendURL := os.Getenv("FRONTEND_URL")
+
+		if origin == frontendURL {
+			return true
+		}
+
+		if origin == "http://localhost:5173" {
+			return true
+		}
+
+		return false
 	},
 }
 
