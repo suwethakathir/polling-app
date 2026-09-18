@@ -16,7 +16,7 @@ function Results({
     const fetchPoll = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/polls/${pollId}`
+          `https://polling-app-3ko1.onrender.com/api/polls/${pollId}`
         );
 
         const data = await response.json();
@@ -47,7 +47,7 @@ function Results({
 
     // Connect to the Go WebSocket endpoint
     socket = new WebSocket(
-      `ws://localhost:8080/api/polls/${pollId}/live`
+      `wss://polling-app-3ko1.onrender.com/api/polls/${pollId}/live`
     );
 
     socket.onopen = () => {

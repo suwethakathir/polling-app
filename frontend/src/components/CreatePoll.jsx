@@ -60,7 +60,7 @@ function CreatePoll({ onCancel }) {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/polls",
+        "https://polling-app-3ko1.onrender.com/api/polls",
         {
           method: "POST",
           headers: {

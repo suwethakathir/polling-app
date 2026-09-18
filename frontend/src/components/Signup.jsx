@@ -15,7 +15,7 @@ function Signup({ onSignupSuccess, onBackToLogin }) {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/auth/signup",
+        "https://polling-app-3ko1.onrender.com/api/auth/signup",
         {
           method: "POST",
           headers: {

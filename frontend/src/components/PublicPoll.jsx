@@ -11,7 +11,7 @@ function PublicPoll({ pollId, onVoteSuccess }) {
     const fetchPoll = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/polls/${pollId}`
+          `https://polling-app-3ko1.onrender.com/api/polls/${pollId}`
         );
 
         const data = await response.json();
@@ -50,7 +50,7 @@ function PublicPoll({ pollId, onVoteSuccess }) {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/polls/${pollId}/vote`,
+        `https://polling-app-3ko1.onrender.com/api/polls/${pollId}/vote`,
         {
           method: "POST",
           headers: {

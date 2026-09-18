@@ -9,7 +9,7 @@ function Dashboard({ onCreatePoll, onViewPoll, onViewResults }) {
     const fetchPolls = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/polls",
+          "https://polling-app-3ko1.onrender.com/api/polls",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -92,7 +92,7 @@ function Dashboard({ onCreatePoll, onViewPoll, onViewResults }) {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/polls/${pollId}`,
+        `https://polling-app-3ko1.onrender.com/api/polls/${pollId}`,
         {
           method: "DELETE",
           headers: {
