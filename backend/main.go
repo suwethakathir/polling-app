@@ -14,10 +14,7 @@ import (
 func main() {
 
 	// Load environment variables
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	_ = godotenv.Load()
 
 	if os.Getenv("JWT_SECRET") == "" {
 	log.Fatal("JWT_SECRET is not set")
