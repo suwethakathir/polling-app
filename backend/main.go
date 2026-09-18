@@ -21,7 +21,7 @@ func main() {
 }
 
 	// Connect to MongoDB
-	err = config.ConnectMongoDB()
+	err := config.ConnectMongoDB()
 	if err != nil {
 		log.Fatal(err)
 	}
